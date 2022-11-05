@@ -10,7 +10,8 @@ const postSchema = new mongoose.Schema({
         required: true
     },
     likes: [{
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }],
     comments: [{
         comment: {
@@ -18,10 +19,16 @@ const postSchema = new mongoose.Schema({
             required: true
         },
         user: {
-            type: String,
-            required: true
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: "User"
         }
-    }]
+    }],
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User"
+    }
 });
 
 module.exports = mongoose.model("Post", postSchema);
