@@ -15,7 +15,7 @@ app.use(cors());
 dotenv.config();
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // connecting to the database
 mongoose.connect(process.env.DB_CONNECTION, {
@@ -25,9 +25,11 @@ mongoose.connect(process.env.DB_CONNECTION, {
 
 // routers
 const authRouter = require("./routers/auth");
+const postRouter = require("./routers/post");
 
 // routes
 app.use("/auth", authRouter);
+app.use("/post", postRouter);
 
 app.get("/", (req, res) => {
     console.log("Server is up...");

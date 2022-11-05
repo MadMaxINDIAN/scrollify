@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const authController = require("../controllers/auth");
 const { body } = require("express-validator");
-const authMiddleware = require('../middleware/auth')
 
 // METHOD: POST
 // URL: /auth/signup
